@@ -22,15 +22,11 @@ app.use("/api/books", booksRoutes);
 
 async function main() {
   await mongoose.connect(process.env.DB_URL);
-  app.get("/", (req, res) => {
-    res.send("Hello World!");
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
   });
 }
 
 main()
   .then(() => console.log("mongodb connect successfully"))
   .catch((err) => console.log(err));
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
