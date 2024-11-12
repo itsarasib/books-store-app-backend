@@ -16,7 +16,7 @@ const createBook = async (req, res) => {
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.find().sort({ createdAt: -1 }); // descending order
-    res.status(200).send({ message: "Get all books successfully", books });
+    res.status(200).send(books);
   } catch (error) {
     console.error("Error getting books: ", error);
     res.status(500).send({ message: "Failed to get books" });
@@ -30,7 +30,7 @@ const getBookById = async (req, res) => {
     if (!book) {
       return res.status(404).send({ message: "Book not found" });
     }
-    res.status(200).send({ message: "Get book by id successfully", book });
+    res.status(200).send(book);
   } catch (error) {
     console.error("Error getting book by id: ", error);
     res.status(500).send({ message: "Failed to get book by id" });
