@@ -1,8 +1,14 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-require("dotenv").config();
 const cors = require("cors");
+
+//routes
+const booksRoutes = require("./src/books/book.route");
+const orderRoutes = require("./src/orders/order.route");
+const userRoutes = require("./src/users/user.route");
+const adminRoutes = require("./src/stats/admin.stats");
 
 //port
 const port = process.env.PORT || 3000;
@@ -18,12 +24,6 @@ app.use(
     credentials: true,
   })
 );
-
-//routes
-const booksRoutes = require("./src/books/book.route");
-const orderRoutes = require("./src/orders/order.route");
-const userRoutes = require("./src/users/user.route");
-const adminRoutes = require("./src/stats/admin.stats");
 
 app.use("/api/books", booksRoutes);
 app.use("/api/orders", orderRoutes);

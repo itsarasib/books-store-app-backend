@@ -2,6 +2,7 @@ const Book = require("./book.model");
 
 const createBook = async (req, res) => {
   try {
+    //TODO: validate values
     const newBook = await Book({ ...req.body });
     await newBook.save(); // save the new book to the database
     res
